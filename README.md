@@ -1,11 +1,11 @@
 # 🚀 DevOps Learning Journey 2025-2026
 
-Dokumentasi perjalanan belajar menjadi DevOps Engineer dari Web Developer & Linux Sysadmin.
+Dokumentasi perjalanan belajar menjadi DevOps Engineer dari Full-Stack Developer & Linux Sysadmin.
 
 ## 👤 About Me
 
 **Status:** Mahasiswa Fasilkom UNEJ  
-**Background:**  Web Developer & Linux System Administrator  
+**Background:** Full-Stack Web Developer & Linux System Administrator  
 **Goal:** Menjadi DevOps Engineer dalam 7 bulan (Des 2025 - Jul 2026)
 
 ## ✅ Current Skills
@@ -68,4 +68,173 @@ Dokumentasi perjalanan belajar menjadi DevOps Engineer dari Web Developer & Linu
 - [ ] GitHub Actions basics
 - [ ] Automated testing integration
 - [ ] Deployment automation
-- [ ] CI
+- [ ] CI pipeline untuk Laravel
+
+**Week 5-8 (Mar):**
+- [ ] Jenkins fundamentals
+- [ ] Build automated pipelines
+- [ ] Webhooks & triggers
+- [ ] Production deployment automation
+
+**📦 Project:** Full CI/CD pipeline untuk Laravel app
+
+---
+
+### Fase 3: April - Mei 2026
+**🎯 Target: Kubernetes & IaC**
+
+**Week 1-4 (Apr):**
+- [ ] Kubernetes basics (Minikube)
+- [ ] Pods, Deployments, Services
+- [ ] ConfigMaps & Secrets
+- [ ] Deploy Laravel to K8s
+
+**Week 5-8 (Mei):**
+- [ ] Terraform fundamentals
+- [ ] Ansible for configuration
+- [ ] IaC best practices
+- [ ] Multi-environment setup
+
+**📦 Project:** Deploy app to Kubernetes + IaC repository
+
+---
+
+### Fase 4: Juni - Juli 2026
+**🎯 Target: Cloud & Monitoring**
+
+**Week 1-4 (Jun):**
+- [ ] Cloud platform (GCP/AWS)
+- [ ] Cloud compute, storage, networking
+- [ ] Managed services
+- [ ] Deploy to cloud
+
+**Week 5-8 (Jul):**
+- [ ] Prometheus & Grafana
+- [ ] Logging (ELK Stack/Loki)
+- [ ] Python automation basics
+- [ ] Portfolio finalization
+
+**📦 Project:** Production-ready cloud deployment + monitoring
+
+---
+
+## 📊 Daily Progress Log
+
+### Week 1: Docker Fundamentals (10-16 Des 2025)
+
+#### 📅 Hari 1 - Selasa, 10 Desember 2025
+- ✅ Membuat roadmap DevOps learning
+- ✅ Setup GitHub repository tracking
+- ✅ Setup shortcuts (devops, devcd, devpush, devlog)
+- 🎯 Next: Install Docker
+
+#### 📅 Hari 2 - Rabu, 11 Desember 2025
+- 
+
+#### 📅 Hari 3 - Kamis, 12 Desember 2025
+- 
+
+#### 📅 Hari 4 - Jumat, 13 Desember 2025
+- 
+
+#### 📅 Hari 5 - Sabtu, 14 Desember 2025
+- 
+
+#### 📅 Hari 6 - Minggu, 15 Desember 2025
+- 
+
+#### 📅 Hari 7 - Senin, 16 Desember 2025
+- 
+
+**Week 1 Summary:**
+- Total study hours: 
+- Main achievement:
+- Challenges faced:
+- Next week focus:
+
+---
+
+## 🎯 Projects Tracker
+
+### 1. SIMPROK Dockerization
+- **Status:** 🔴 Not Started
+- **Tech Stack:** Laravel, PostgreSQL, Docker, Docker Compose
+- **Timeline:** January 2026
+- **Goal:** Full containerized development environment
+
+### 2. CI/CD Pipeline
+- **Status:** 🔴 Not Started
+- **Tech Stack:** GitHub Actions, Jenkins, Docker
+- **Timeline:** March 2026
+- **Goal:** Automated build, test, deploy
+
+### 3. Kubernetes Deployment
+- **Status:** 🔴 Not Started
+- **Tech Stack:** Kubernetes, Helm, Docker
+- **Timeline:** May 2026
+- **Goal:** Production-grade K8s deployment
+
+### 4. Cloud Infrastructure
+- **Status:** 🔴 Not Started
+- **Tech Stack:** GCP/AWS, Terraform, Monitoring
+- **Timeline:** July 2026
+- **Goal:** Scalable cloud architecture
+
+---
+
+## 📚 Learning Resources
+
+### Docker
+- [Docker Official Documentation](https://docs.docker.com/)
+- [Docker Tutorial for Beginners](https://docker-curriculum.com/)
+- Docker Compose Guide
+
+### Kubernetes
+- [Kubernetes Documentation](https://kubernetes.io/docs/)
+- KodeKloud Kubernetes Course
+- Learn Kubernetes in 2025 Roadmap
+
+### CI/CD
+- GitHub Actions Documentation
+- Jenkins Official Guide
+- DevOps Roadmap: roadmap.sh/devops
+
+### General
+- r/devops Community
+- DevOps Indonesia Discord
+- TechWorld with Nana (YouTube)
+
+---
+
+## 🔥 Commitment & Tracking
+
+**Started:** 10 Desember 2025  
+**Target Completion:** Juli 2026  
+**Study Time Target:** 10-15 jam/minggu
+
+**Current Streak:** 🔥 1 day  
+**Total Study Hours:** 0 hours  
+**Commits:** 1
+
+**Weekly Goal:** Minimal 5 commits, 10 jam study time
+
+---
+
+## 💡 Notes & Reflections
+
+### Key Learnings
+- 
+
+### Challenges & Solutions
+- 
+
+### Tips for Future Self
+- Consistency > Intensity
+- Document everything
+- Don't break the chain
+- Practice > Theory
+
+---
+
+**Last Updated:** 10 Desember 2025  
+**Next Milestone:** Install Docker & run first container
