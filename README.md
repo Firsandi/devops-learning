@@ -338,8 +338,162 @@ docker run -d -p 8080:80 --name my-nginx nginx
 
 ---
 
-#### 📅 Hari 3 - Jumat, 12 Desember 2025
-- 
+## Day 3: Custom Docker Image & Dockerfile Basics
+**Tanggal:** 12 Desember 2025 | **Waktu:** 21:48 - 22:15 WIB (27 menit)
+
+### 🎯 Learning Objectives
+- Memahami konsep Docker Image vs Container
+- Membuat Dockerfile pertama
+- Build custom Docker image
+- Deploy static HTML menggunakan custom image
+
+### 📚 Konsep yang Dipelajari
+
+#### Image vs Container
+- **Image** = Blueprint/template (read-only, tersimpan lokal)
+- **Container** = Running instance dari image (writable layer)
+- Analogi: Image = resep kue, Container = kue yang matang
+
+#### Base Image & Alpine Linux
+- **Base Image** = Pondasi/template dasar untuk build image
+- **Alpine Linux** = OS minimal (8MB) untuk container
+- Keunggulan Alpine: Super ringan, cepat, hemat resource
+- Format: `FROM nginx:alpine` (Nginx + Alpine = 40MB)
+
+#### Dockerfile Instructions
+```dockerfile
+FROM nginx:alpine              # Base image (wajib, pertama)
+COPY index.html /usr/share/nginx/html/  # Inject file ke image
+EXPOSE 80                      # Dokumentasi port (opsional)
+FROM  Tentukan base image
+COPY Salin file dari host → image (saat build)
+EXPOSE Metadata/dokumentasi port (tidak buka akses)
+Storage & Layer System
+Image tersimpan lokal: /var/lib/docker/
+Image = berlapis (layer system) untuk efisiensi
+Container = image layers (read-only) + writable layer
+Data di writable layer hilang saat container dihapus
+Port Mapping
+Port host = "gerbang" untuk akses container
+Format: -p 8080:80 (host:container)
+Hanya port yang di-map yang bisa diakses
+Multiple containers bisa pakai port host berbeda
+
+🛠️ Hands-on Practice
+1. Setup Project
+mkdir ~/docker-day3
+cd ~/docker-day3
+
+2. Buat Custom HTML
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Docker Day 3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐳 Hello from Docker Day 3!</h1>
+        <p>Custom Nginx Image - Built by Firsandia</p>
+        <p>Learning: Dockerfile + Custom Images</p>
+    </div>
+</body>
+</html>
+
+3. Buat Dockerfile
+FROM nginx:alpine (base kernel)
+COPY index.html /usr/share/nginx/html/index.html (copy dari index.htm yang sudah dicustom dan dimasukkan kedalam images ketika melakukan docker run)
+EXPOSE 80 (hanya untuk tanda saja)
+
+4. Build & Run
+
+# Build custom image
+docker build -t nginx-day3 .
+
+# Check images
+docker images
+
+# Run container
+docker run -d -p 8080:80 --name test-day3 nginx-day3
+
+# Check running containers
+docker ps
+
+# Access via browser
+http://localhost:8080
+
+✅ Result
+✅ Custom Docker image berhasil dibuat (nginx-day3)
+
+✅ Container jalan dengan custom HTML
+
+✅ Halaman web dengan gradient ungu-biru muncul sempurna
+
+✅ File ter-inject permanen ke dalam image
+
+🧠 Key Insights
+COPY = inject file ke image (saat build, permanen)
+
+EXPOSE ≠ buka port (cuma dokumentasi)
+
+Port mapping (-p) yang benar-benar buka akses
+
+Image lokal, tidak otomatis ke cloud
+
+1 image → banyak container (efficient!)
+
+📊 Performance
+Duration: 27 menit (super efisien!)
+
+Konsep dikuasai: 5/5 ⭐⭐⭐⭐⭐
+
+Hands-on success: First try! 🎉
+
+Understanding: Deep dive setiap konsep
+
+🔜 Next Session (Day 4)
+Docker Volumes (persistent storage)
+
+Docker run advanced options
+
+Multi-container communication
+
+Docker Compose basics
+
+text
+
+***
+
+## 🌙 Sekarang:
+
+```bash
+# Optional: Stop container kalau mau (hemat resource)
+docker stop test-day3
+
+# Goodnight message di devlog:
+devlog "Day 3 complete! Custom Docker image + Dockerfile basics mastered. Time to rest! 😴"
+devpush
+Tomorrow's Plan (Day 4):
+Fresh start dengan:
+
+Review singkat Day 3 (5 menit)
+
+Docker Volumes (persistent data)
+
+Docker Compose intro
+
+Multiple container orchestration
 
 #### 📅 Hari 4 - Sabtu, 13 Desember 2025
 - 
