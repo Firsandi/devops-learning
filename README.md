@@ -30,15 +30,15 @@ Dokumentasi perjalanan belajar menjadi DevOps Engineer dari Full-Stack Developer
 
 ## 🎯 DevOps Skills Progress
 
-- [🟡] **Docker & Containerization (IN PROGRESS - 40% complete!)**
+- [🟢] **Docker & Containerization (IN PROGRESS - 60% complete!)**
   - ✅ Installation & setup (Docker Engine 29.1.2)
   - ✅ Basic commands mastered (run, ps, stop, start, rm, logs, exec, inspect, stats)
   - ✅ Networking concepts (ADVANCED! Port mapping, bridge networks, namespaces)
   - ✅ Container isolation & architecture understanding
   - ✅ Linux permissions & security model
-  - [ ] Dockerfile & custom images
+  - ✅ Dockerfile & custom images
+  - ✅ Volumes & persistent data (MASTERED!)
   - [ ] Docker Compose for multi-container apps
-  - [ ] Volumes & persistent data
   - [ ] Custom networks & network modes
 - [ ] Kubernetes & Orchestration
 - [ ] CI/CD (GitHub Actions, Jenkins)
@@ -58,12 +58,13 @@ Dokumentasi perjalanan belajar menjadi DevOps Engineer dari Full-Stack Developer
 - [✅] Docker fundamentals: install, basic commands
 - [✅] Understand containers vs VMs
 - [✅] Practice with simple containers
-- [ ] Create first Dockerfile
+- [✅] Create first Dockerfile
+- [✅] Volumes & persistent data
 
 **Week 3-4 (25 Des - 7 Jan):**
 - [ ] Docker Compose for multi-container apps
 - [ ] Dockerize simple Laravel app
-- [ ] Docker networking & volumes
+- [ ] Docker networking advanced
 - [ ] Git advanced: branching, merge strategies
 
 **📦 Project:** Dockerize SIMPROK project (Laravel + PostgreSQL)
@@ -131,391 +132,282 @@ Dokumentasi perjalanan belajar menjadi DevOps Engineer dari Full-Stack Developer
 
 ### Week 1: Docker Fundamentals (10-16 Des 2025)
 
-#### 📅 Hari 1 - Selasa, 10 Desember 2025
+#### 📅 Day 1 - Selasa, 10 Desember 2025
 
 **Setup & Planning**
 - ✅ Membuat roadmap DevOps learning (7 bulan)
 - ✅ Setup GitHub repository tracking
 - ✅ Setup shortcuts (devops, devcd, devpush, devlog)
 - ✅ Research Docker learning path
-- 🎯 Next: Install Docker & first container
 
 **Study Time:** 1 jam  
-**Status:** Foundation set! Ready to start! 🚀
+**Status:** Foundation set!
 
 ---
 
-#### 📅 Hari 2 - Kamis, 11 Desember 2025
+#### 📅 Day 2 - Kamis, 11 Desember 2025
 
-**🐳 Docker Installation & Fundamentals - DEEP DIVE**
+**Docker Installation & Fundamentals - DEEP DIVE**
 
 **Installation & Setup:**
-- ✅ Install Docker Engine 29.1.2 (docker-ce, docker-ce-cli, containerd.io)
-- ✅ Fix Docker daemon startup (systemctl start/enable docker)
-- ✅ Setup user permissions (`usermod -aG docker $USER`)
-- ✅ Understand Docker socket & permission system (`/var/run/docker.sock`)
-- ✅ First container: `docker run hello-world` - SUCCESS! 🎉
+- ✅ Install Docker Engine 29.1.2
+- ✅ Fix Docker daemon startup
+- ✅ Setup user permissions
+- ✅ First container: hello-world
 
-**Linux System Concepts (Foundation):**
-- ✅ User, Group, Others permission system (rwx, 0-7 numeric)
-- ✅ File ownership vs sudo (deep understanding)
-- ✅ Group membership & access control
-- ✅ Security implications (docker group = privilege escalation awareness)
-- ✅ Permission breakdown: `660 (rw-rw----)` for Docker socket
+**Linux System Concepts:**
+- User, Group, Others permission system
+- File ownership & sudo
+- Security implications
 
-**Container Concepts - BREAKTHROUGH! 🔥**
-- ✅ Container = "tembok pembatas" untuk isolate projects
-- ✅ Isolation: processes, filesystem, network (namespaces)
-- ✅ Container vs VM comparison (shared kernel vs full OS)
-- ✅ Benefits: portability, consistency, no dependency conflicts
-- ✅ Use cases: multiple PHP versions, project separation, clean environment
+**Container Concepts:**
+- Container = isolasi untuk projects
+- Container vs VM comparison
+- Benefits: portability, consistency
 
-**Networking Mastery (ADVANCED LEVEL!):**
-- ✅ Port mapping: `-p <host>:<container>` format & rationale
-- ✅ Port mapping ≈ NAT di Virtual Machine (brilliant connection!)
-- ✅ Docker bridge network (172.17.0.0/16 default network)
-- ✅ Network namespaces (container punya network sendiri!)
-- ✅ Internal IP (172.17.0.x) vs external access
-- ✅ Container-to-container communication (same bridge network)
-- ✅ iptables/DNAT rules (underlying technology)
-- ✅ Port assignment strategies (sequential, project-based, service-based)
-- ✅ Port ranges: well-known (1-1023), registered (1024-49151), dynamic (49152-65535)
+**Networking Mastery:**
+- Port mapping format & rationale
+- Docker bridge network
+- Network namespaces
+- iptables/DNAT rules
 
 **Docker Commands Mastered:**
-Container lifecycle
-docker run -d -p 8080:80 --name web nginx # Run detached with port mapping
-docker ps # List running containers
-docker ps -a # List all containers
-docker stop <container> # Stop container (SIGTERM)
-docker start <container> # Start stopped container
-docker rm <container> # Remove container
-docker rm -f <container> # Force remove (stop + remove)
+```bash
+# Lifecycle
+docker run, ps, stop, start, rm
 
-Inspection & debugging
-docker logs <container> # View container logs
-docker logs -f <container> # Follow logs (real-time)
-docker exec -it <container> bash # Interactive shell in container
-docker inspect <container> # Detailed container info (JSON)
-docker stats <container> # Resource usage (CPU, memory, network)
+# Inspection
+docker logs, exec, inspect, stats
 
-Images
-docker images # List images
-docker rmi <image> # Remove image
-docker pull <image> # Download image
+# Images
+docker images, rmi, pull
 
-System management
-docker container prune # Remove all stopped containers
-docker system prune # Clean up unused resources
+# System
+docker container prune, system prune
+```
 
-Network tools
-netstat -tuln | grep :<port> # Check port availability
-ss -tuln | grep :<port> # Modern alternative to netstat
-lsof -i :<port> # Check what's using a port
-nc -zv localhost <port> # Test port connectivity
-
-
-**Hands-On Experiments:**
-- ✅ Run container WITHOUT port mapping (understand isolation effect)
-- ✅ Access container via internal IP (`curl http://172.17.0.2`)
-- ✅ Experiment result: Container accessible via internal IP, not via localhost
-- ✅ Understand why browser can't access without port mapping
-- ✅ Check port availability (netstat, lsof, nc)
-- ✅ Container network inspection (`docker inspect | grep IPAddress`)
-- ✅ Verify container running: `docker ps` shows `80/tcp` (no mapping)
-
-**Key Insights & "Aha!" Moments:**
-- 💡 **"Port mapping mirip NAT di VM!"** - Connected Docker networking with VM NAT concept
-- 💡 **"Container ada networknya lagi?"** - Understood network namespaces perfectly!
-- 💡 **"Seperti buat virtual server?"** - Grasped container architecture (lightweight VM)
-- 💡 **"Jadi membuat tembok pembatas?"** - PERFECT analogy for container isolation!
-- 💡 **Port kiri (host) BEBAS, port kanan (container) FIXED by app!** - Deep understanding!
-- 💡 **"Gilak sekompleks itu"** - Recognized importance of networking knowledge
-
-**Technical Deep Dive:**
-- Network isolation via Linux namespaces (separate network stack per container)
-- Docker bridge (`docker0`) as virtual switch (IP: 172.17.0.1)
-- Container ≈ lightweight VM (shared kernel, isolated userspace)
-- Security model: groups, socket permissions, privilege escalation risks
-- Port conflicts resolution & management strategies
-- iptables DNAT rules for port forwarding (similar to VM NAT)
-
-**Networking Architecture Understanding:**
-Internet
-↓
-WiFi Router (192.168.1.1)
-↓
-Laptop eth0/wlan0 (192.168.1.100)
-↓
-Docker Bridge (docker0: 172.17.0.1)
-↓
-├── Container 1 (172.17.0.2) - Nginx port 80
-├── Container 2 (172.17.0.3) - PostgreSQL port 5432
-└── Container 3 (172.17.0.4) - Redis port 6379
-
-Port Mapping: localhost:8080 → 172.17.0.2:80 (NAT/DNAT)
-
-
-**Problem Solving:**
-- ✅ Docker daemon not starting → `systemctl start docker` troubleshooting
-- ✅ Permission denied → `usermod -aG docker $USER` + `newgrp docker` solution
-- ✅ Port conflicts understanding → netstat checking & port selection strategy
-- ✅ Container access issues → port mapping understanding & validation
-
-**Documentation & Best Practices Learned:**
-- Document port mappings per project (avoid conflicts)
-- Use sequential numbering for same services (8080, 8081, 8082 for Nginx)
-- Group ports by type (8000s=web, 5000s=db, 6000s=cache)
-- Check port availability before use (`netstat -tuln`)
-- Understand security implications of exposing ports (internal vs external)
-- Container naming conventions (`--name` for easy reference)
-
-**Command Breakdown Understanding:**
-docker run -d -p 8080:80 --name my-nginx nginx
-│ │ │ │ │ │ └─ Image: nginx (shorthand for docker.io/library/nginx:latest)
-│ │ │ │ │ └─ Container name (for easy reference)
-│ │ │ │ └─ Flag: set container name
-│ │ │ └─ Port mapping: laptop 8080 → container 80
-│ │ └─ Flag: publish port (port mapping)
-│ └─ Flag: detached mode (background)
-└─ Docker CLI: run container (create + start)
-
-
-**Comparison: Container vs VM**
-| Aspect | Virtual Machine | Docker Container |
-|--------|----------------|------------------|
-| **OS** | Full OS (kernel sendiri) | Shared kernel (host) |
-| **Network** | Full network stack | Network namespace (virtual) |
-| **IP Address** | ✅ 10.0.2.x (NAT network) | ✅ 172.17.0.x (bridge network) |
-| **Isolation** | ✅ Full (hardware-level) | ✅ Good (OS-level) |
-| **Size** | Heavy (2GB+ RAM, 10GB+ disk) | Light (10-100MB RAM, 100-500MB disk) |
-| **Startup** | Slow (30s-2min) | Fast (1-2s) |
-| **Use case** | Different OS needed | Same OS, app isolation |
-| **Technology** | Hypervisor (VirtualBox, VMware) | Linux namespaces + cgroups |
-
-**Study Time:** 3+ hours (18:00 - 21:22 WIB) - INTENSIVE SESSION!  
-**Level Achieved:** Advanced (DevOps-ready networking knowledge!)  
-**Performance Rating:** A+ (Outstanding depth & speed of learning!) 🏆  
-**Retention:** Excellent (hands-on experiments + deep conceptual understanding)
-
-**Next Learning Goals:**
-- Dockerfile & building custom images
-- Multi-container apps (Nginx + PHP-FPM + PostgreSQL)
-- Docker Compose for orchestration
-- Volumes for persistent data
-- Custom networks & network modes
-- Environment variables & configuration management
-
-**Personal Notes & Reflections:**
-- **Networking knowledge = CRITICAL untuk DevOps success** ✅
-- "Docker bukan magic - kombinasi networking + Linux namespaces + cgroups"
-- Experimentation mindset = best learning approach!
-- Strong foundation (Linux, networking, VM experience) = accelerated learning
-- Keep asking "WHY" not just "HOW" - this is the key to deep understanding! 🔑
-- Connecting new concepts with existing knowledge (NAT, VM, permissions) works perfectly!
-
-**Challenges Overcome:**
-- Initial complexity understood through systematic breakdown
-- Connected Docker concepts with existing knowledge (VM NAT, Linux networking)
-- Hands-on experimentation solidified theoretical understanding
-- Advanced concepts (namespaces, iptables, DNAT) grasped successfully!
-- Port mapping confusion resolved through analogy (apartment building, NAT)
-
-**Achievement Unlocked Today:** 🏆
-- ✅ Docker fundamentals: MASTERED
-- ✅ Networking concepts: ADVANCED LEVEL (DevOps Engineer level!)
-- ✅ Linux permissions: DEEP UNDERSTANDING (security awareness)
-- ✅ Critical thinking: SENIOR-LEVEL (asking WHY, not just HOW)
-- ✅ Troubleshooting: EXCELLENT (systematic problem-solving approach)
-
-**Learning Velocity:** 🚀
-- Average student: 3-5 days untuk level ini
-- Actual: 1 day (3 jam intensif)
-- Speed: **3-5x faster than average!**
-
-🔥 **Status: WAY EXCEEDED Day 2 expectations!**  
-🚀 **Ready for Phase 3: Dockerfile & custom images!**  
-💪 **Confidence Level: HIGH - Solid foundation established!**
+**Study Time:** 3+ hours  
+**Level:** Advanced networking knowledge  
+**Performance:** A+ (3-5x faster than average)
 
 ---
 
-## Day 3: Custom Docker Image & Dockerfile Basics
-**Tanggal:** 12 Desember 2025 | **Waktu:** 21:48 - 22:15 WIB (27 menit)
+#### 📅 Day 3 - Kamis, 12 Desember 2025
 
-### 🎯 Learning Objectives
-- Memahami konsep Docker Image vs Container
+**Custom Docker Image & Dockerfile Basics**
+
+**Learning Objectives:**
+- Docker Image vs Container
 - Membuat Dockerfile pertama
 - Build custom Docker image
-- Deploy static HTML menggunakan custom image
+- Deploy static HTML
 
-### 📚 Konsep yang Dipelajari
+**Konsep Dikuasai:**
 
-#### Image vs Container
-- **Image** = Blueprint/template (read-only, tersimpan lokal)
-- **Container** = Running instance dari image (writable layer)
-- Analogi: Image = resep kue, Container = kue yang matang
+**Image vs Container:**
+- Image = Blueprint (read-only)
+- Container = Running instance (writable layer)
 
-#### Base Image & Alpine Linux
-- **Base Image** = Pondasi/template dasar untuk build image
-- **Alpine Linux** = OS minimal (8MB) untuk container
-- Keunggulan Alpine: Super ringan, cepat, hemat resource
-- Format: `FROM nginx:alpine` (Nginx + Alpine = 40MB)
+**Base Image & Alpine Linux:**
+- Alpine = OS minimal (8MB)
+- nginx:alpine = Nginx + Alpine (40MB)
 
-#### Dockerfile Instructions
+**Dockerfile Instructions:**
 ```dockerfile
-FROM nginx:alpine              # Base image (wajib, pertama)
-COPY index.html /usr/share/nginx/html/  # Inject file ke image
-EXPOSE 80                      # Dokumentasi port (opsional)
-FROM  Tentukan base image
-COPY Salin file dari host → image (saat build)
-EXPOSE Metadata/dokumentasi port (tidak buka akses)
-Storage & Layer System
-Image tersimpan lokal: /var/lib/docker/
-Image = berlapis (layer system) untuk efisiensi
-Container = image layers (read-only) + writable layer
-Data di writable layer hilang saat container dihapus
-Port Mapping
-Port host = "gerbang" untuk akses container
-Format: -p 8080:80 (host:container)
-Hanya port yang di-map yang bisa diakses
-Multiple containers bisa pakai port host berbeda
+FROM nginx:alpine
+COPY index.html /usr/share/nginx/html/
+EXPOSE 80
+```
 
-🛠️ Hands-on Practice
-1. Setup Project
+**Hands-on Practice:**
+```bash
 mkdir ~/docker-day3
 cd ~/docker-day3
-
-2. Buat Custom HTML
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Docker Day 3</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>🐳 Hello from Docker Day 3!</h1>
-        <p>Custom Nginx Image - Built by Firsandia</p>
-        <p>Learning: Dockerfile + Custom Images</p>
-    </div>
-</body>
-</html>
-
-3. Buat Dockerfile
-FROM nginx:alpine (base kernel)
-COPY index.html /usr/share/nginx/html/index.html (copy dari index.htm yang sudah dicustom dan dimasukkan kedalam images ketika melakukan docker run)
-EXPOSE 80 (hanya untuk tanda saja)
-
-4. Build & Run
-
-# Build custom image
+# Create index.html & Dockerfile
 docker build -t nginx-day3 .
-
-# Check images
-docker images
-
-# Run container
 docker run -d -p 8080:80 --name test-day3 nginx-day3
+```
 
-# Check running containers
-docker ps
+**Result:**
+- ✅ Custom image berhasil dibuat
+- ✅ Container jalan dengan custom HTML
+- ✅ File ter-inject permanen ke image
 
-# Access via browser
-http://localhost:8080
+**Study Time:** 27 menit  
+**Status:** Highly efficient!
 
-✅ Result
-✅ Custom Docker image berhasil dibuat (nginx-day3)
+---
 
-✅ Container jalan dengan custom HTML
+#### 📅 Day 4 - Sabtu, 13 Desember 2025
 
-✅ Halaman web dengan gradient ungu-biru muncul sempurna
+Skip (acara organisasi HIMATIF)
 
-✅ File ter-inject permanen ke dalam image
+---
 
-🧠 Key Insights
-COPY = inject file ke image (saat build, permanen)
+#### 📅 Day 5 - Minggu, 14 Desember 2025
 
-EXPOSE ≠ buka port (cuma dokumentasi)
+**Docker Volumes & Persistent Data**
 
-Port mapping (-p) yang benar-benar buka akses
+**Learning Objectives:**
+- Memahami masalah data temporary di container
+- Implementasi Docker Volumes
+- Praktik dengan MySQL container
+- Test data persistence
 
-Image lokal, tidak otomatis ke cloud
+**Problem: Container Data is Temporary**
 
-1 image → banyak container (efficient!)
+Data yang hilang saat container dihapus:
+- Database records
+- User uploads
+- Application logs
+- Cache files
 
-📊 Performance
-Duration: 27 menit (super efisien!)
+**Solution: Docker Volumes**
 
-Konsep dikuasai: 5/5 ⭐⭐⭐⭐⭐
+Volume = External storage terpisah dari container lifecycle
 
-Hands-on success: First try! 🎉
+Karakteristik:
+- Lokasi: /var/lib/docker/volumes/
+- Managed by Docker
+- Persistent data
+- Portable & can be mounted to multiple containers
 
-Understanding: Deep dive setiap konsep
+**Volume vs Bind Mount:**
 
-🔜 Next Session (Day 4)
-Docker Volumes (persistent storage)
+| Aspek | Volume | Bind Mount |
+|-------|--------|------------|
+| Management | Docker CLI | Manual path |
+| Location | /var/lib/docker/volumes/ | Anywhere di host |
+| Best For | Production database | Development |
+| Speed | Super cepat | Cepat |
 
-Docker run advanced options
+**Default Data Directory:**
+```
+MySQL       → /var/lib/mysql
+PostgreSQL  → /var/lib/postgresql/data
+MongoDB     → /data/db
+Redis       → /data
+```
 
-Multi-container communication
-
-Docker Compose basics
-
-text
-
-***
-
-## 🌙 Sekarang:
+**Hands-on Practice:**
 
 ```bash
-# Optional: Stop container kalau mau (hemat resource)
-docker stop test-day3
+# Step 1: Create volume
+docker volume create mysql-data
+docker volume ls
+docker volume inspect mysql-data
 
-# Goodnight message di devlog:
-devlog "Day 3 complete! Custom Docker image + Dockerfile basics mastered. Time to rest! 😴"
-devpush
-Tomorrow's Plan (Day 4):
-Fresh start dengan:
+# Step 2: Run MySQL dengan volume
+docker run -d \
+  --name my-mysql \
+  -e MYSQL_ROOT_PASSWORD=secret123 \
+  -e MYSQL_DATABASE=belajar_db \
+  -v mysql-data:/var/lib/mysql \
+  -p 3307:3306 \
+  mysql:8.0
 
-Review singkat Day 3 (5 menit)
+# Step 3: Create table & insert data
+docker exec -it my-mysql mysql -uroot -psecret123 belajar_db
+```
 
-Docker Volumes (persistent data)
+```sql
+CREATE TABLE mahasiswa (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nim VARCHAR(20),
+    nama VARCHAR(100),
+    jurusan VARCHAR(50)
+);
 
-Docker Compose intro
+INSERT INTO mahasiswa (nim, nama, jurusan) VALUES
+('230101001', 'Firsandia Nur Fajri', 'Ilmu Komputer'),
+('230101002', 'Ahmad Rizki', 'Sistem Informasi'),
+('230101003', 'Siti Nurhaliza', 'Teknik Informatika'),
+('230101004', 'Budi Santoso', 'Ilmu Komputer'),
+('230101005', 'Dewi Lestari', 'Sistem Informasi');
 
-Multiple container orchestration
+SELECT * FROM mahasiswa;
+exit
+```
 
-#### 📅 Hari 4 - Sabtu, 13 Desember 2025
-- 
+```bash
+# Step 4: Test persistence - hapus container
+docker stop my-mysql
+docker rm my-mysql
 
-#### 📅 Hari 5 - Minggu, 14 Desember 2025
-- 
+# Volume tetap ada!
+docker volume ls
 
-#### 📅 Hari 6 - Senin, 15 Desember 2025
-- 
+# Step 5: Create container baru dengan volume sama
+docker run -d \
+  --name my-mysql-new \
+  -e MYSQL_ROOT_PASSWORD=secret123 \
+  -e MYSQL_DATABASE=belajar_db \
+  -v mysql-data:/var/lib/mysql \
+  -p 3307:3306 \
+  mysql:8.0
 
-#### 📅 Hari 7 - Selasa, 16 Desember 2025
-- 
+# Cek data - MASIH ADA!
+docker exec -it my-mysql-new mysql -uroot -psecret123 belajar_db
+SELECT * FROM mahasiswa;
+```
 
-**Week 1 Summary:**
-- **Total study hours:** 4+ hours (Day 1: 1h, Day 2: 3h intensive)
-- **Main achievement:** Docker installation + NETWORKING MASTERY 🔥
-- **Challenges faced:** Complex networking concepts → solved with systematic learning & hands-on experiments
-- **Key breakthrough:** Understanding container isolation, network namespaces, and port mapping (NAT analogy)
-- **Performance:** A+ (Advanced-level understanding achieved in just 1 day!)
-- **Commands mastered:** 15+ Docker commands with deep understanding
-- **Concepts mastered:** Networking, isolation, permissions, container architecture
-- **Next week focus:** Dockerfile, multi-container apps, Docker Compose, volumes
+**Achievement:**
+- ✅ Data tetap ada setelah container dihapus
+- ✅ Volume persistence works perfectly
+- ✅ Production-ready knowledge
+
+**Key Insights:**
+- Container lifecycle ≠ data lifecycle
+- Volume adalah external storage
+- docker build = ISO image
+- Path mount harus sesuai app default
+- Production wajib pakai volume
+
+**Commands Mastered:**
+```bash
+docker volume create/ls/inspect/rm
+docker run -v <volume>:<path>
+docker exec -it <container> mysql
+```
+
+**Troubleshooting:**
+- Port conflict: pakai port berbeda
+- PostgreSQL 18+ incompatibility: recreate volume
+- MySQL access denied: check password typo
+
+**Study Time:** 86 menit (effective: 60 menit)  
+**Status:** Core completed  
+**Performance:** Excellent understanding
+
+---
+
+### Week 1 Summary
+
+**Total Study Hours:** 5+ hours
+- Day 1: 1h (roadmap)
+- Day 2: 3h (Docker + networking)
+- Day 3: 27 min (Dockerfile)
+- Day 5: 60 min (Volumes)
+
+**Main Achievements:**
+- ✅ Docker installation & networking mastery
+- ✅ Custom images dengan Dockerfile
+- ✅ Persistent data dengan volumes
+- ✅ Production-ready concepts
+
+**Commands Mastered:** 20+ Docker commands with deep understanding
+
+**Concepts Mastered:**
+- Networking, isolation, permissions
+- Container architecture
+- Image building & layering
+- Data persistence strategies
+
+**Next Week Focus:**
+- Docker Compose
+- Multi-container apps
+- Advanced networking
+- Laravel dockerization
 
 ---
 
@@ -550,15 +442,13 @@ Multiple container orchestration
 ## 📚 Learning Resources
 
 ### Docker
-- [Docker Official Documentation](https://docs.docker.com/)
-- [Docker Tutorial for Beginners](https://docker-curriculum.com/)
-- Docker Compose Guide
-- **Currently Using:** Hands-on experimentation + systematic breakdown approach
+- Docker Official Documentation
+- Docker Tutorial for Beginners
+- Hands-on experimentation approach
 
 ### Kubernetes
-- [Kubernetes Documentation](https://kubernetes.io/docs/)
+- Kubernetes Documentation
 - KodeKloud Kubernetes Course
-- Learn Kubernetes in 2025 Roadmap
 
 ### CI/CD
 - GitHub Actions Documentation
@@ -578,81 +468,74 @@ Multiple container orchestration
 **Target Completion:** Juli 2026  
 **Study Time Target:** 10-15 jam/minggu
 
-**Current Streak:** 🔥 2 days  
-**Total Study Hours:** 4+ hours  
-**Commits:** 3+ (roadmap + day 1 + day 2)
-
-**This Week Progress:**
-- Day 1: ✅ Roadmap & setup (1 hour)
-- Day 2: ✅ Docker install + NETWORKING DEEP DIVE 🔥 (3+ hours)
-- Day 3-7: Dockerfile & containerization practice (planned)
+**Current Streak:** 4 days (Day 1, 2, 3, 5)  
+**Total Study Hours:** 5+ hours  
+**Commits:** 5+ 
 
 **Weekly Goal:** Minimal 5 commits, 10 jam study time  
-**Status:** ✅ ON TRACK! (Already 4+ hours in 2 days!)
+**Status:** ✅ ON TRACK!
 
 ---
 
 ## 💡 Notes & Reflections
 
 ### Key Learnings
-- **Docker = Networking + Linux Namespaces + Isolation**
-  - Not "magic" - just clever use of existing Linux technologies
-  - Network namespaces provide isolated network stack per container
-  - iptables/DNAT for port forwarding (similar to VM NAT)
 
-- **Container Isolation = "Tembok Pembatas"**
-  - Each project can have different dependencies (PHP versions, databases)
-  - No conflicts between projects
-  - Clean, reproducible environments
+**Docker = Networking + Linux Namespaces + Isolation**
+- Network namespaces provide isolated stack
+- iptables/DNAT for port forwarding
+- Similar to VM NAT concept
 
-- **Port Mapping Concept**
-  - Format: `-p <host_port>:<container_port>`
-  - Host port: BEBAS (choose available port)
-  - Container port: FIXED (determined by application - e.g., 80 for web servers)
-  - Similar to NAT in Virtual Machines
+**Container Isolation**
+- Each project can have different dependencies
+- No conflicts between projects
+- Clean, reproducible environments
 
-- **Networking is Critical for DevOps**
-  - 70% of Docker concepts involve networking
-  - Understanding IP addressing, routing, NAT is essential
-  - Strong networking foundation = faster Docker learning
+**Port Mapping**
+- Format: -p host:container
+- Host port: bebas
+- Container port: fixed by app
+
+**Data Persistence**
+- Container data = temporary
+- Volume data = persistent
+- Critical for production databases
 
 ### Challenges & Solutions
-- **Challenge:** Docker daemon not starting after installation
-  - **Solution:** `systemctl start docker` + `systemctl enable docker`
-  - **Learning:** Understand systemd service management
 
-- **Challenge:** Permission denied when running Docker commands
-  - **Solution:** `sudo usermod -aG docker $USER` + `newgrp docker`
-  - **Learning:** Linux groups, file permissions, socket access
+**Docker daemon not starting**
+- Solution: systemctl start/enable docker
 
-- **Challenge:** Understanding port mapping rationale
-  - **Solution:** Relate to VM NAT, experiment without port mapping
-  - **Learning:** Container network isolation, internal IP addressing
+**Permission denied**
+- Solution: usermod -aG docker + newgrp docker
 
-- **Challenge:** Complexity of networking concepts
-  - **Solution:** Systematic breakdown, hands-on experiments, analogies
-  - **Learning:** Bridge networks, namespaces, iptables rules
+**Port mapping confusion**
+- Solution: Relate to VM NAT, experiments
+
+**Data persistence**
+- Solution: Docker volumes, not container storage
 
 ### Tips for Future Self
-- ✅ **Consistency > Intensity** - Regular practice beats cramming
-- ✅ **Document everything** - Write down insights while fresh
-- ✅ **Don't break the chain** - Keep the learning streak alive
-- ✅ **Practice > Theory** - Hands-on experiments solidify understanding
-- ✅ **Ask WHY, not just HOW** - Deep understanding beats memorization
-- ✅ **Connect new concepts with existing knowledge** - Analogies help (NAT, VM, etc.)
-- ✅ **Experiment fearlessly** - Breaking things teaches more than tutorials
-- ✅ **Take breaks** - Brain needs time to consolidate knowledge
+
+- Consistency > Intensity
+- Document everything
+- Practice > Theory
+- Ask WHY, not just HOW
+- Connect new concepts with existing knowledge
+- Experiment fearlessly
+- Take breaks for brain consolidation
 
 ### Performance Insights
-- **Learning Speed:** 3-5x faster than average (advanced concepts in 1 day!)
-- **Strengths:** Critical thinking, connecting concepts, experimentation mindset
-- **Approach:** Deep dive vs surface learning - understanding architecture vs just commands
-- **Foundation:** Strong Linux/networking background accelerates Docker learning
-- **Next Level:** Ready for Dockerfile, multi-container apps, production deployment
+
+- Learning Speed: 3-5x faster than average
+- Strengths: Critical thinking, experimentation
+- Approach: Deep dive vs surface learning
+- Foundation: Strong Linux/networking background
+- Next Level: Docker Compose, multi-container apps
 
 ---
 
-**Last Updated:** 11 Desember 2025, 21:25 WIB  
-**Next Milestone:** Create first Dockerfile & build custom image  
-**Current Focus:** Docker fundamentals & networking mastery 🐳🔥  
-**Momentum:** 🚀 ACCELERATED! Exceeding expectations!
+**Last Updated:** 14 Desember 2025, 22:38 WIB  
+**Next Milestone:** Docker Compose & multi-container apps  
+**Current Focus:** Docker fundamentals mastery complete  
+**Momentum:** Strong progress, consistent learning!
